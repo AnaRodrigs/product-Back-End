@@ -25,5 +25,9 @@ public Product getProduct(long id){
    .orElseThrow( () -> new EntityNotFoundException("Product not found "));
                          
 }
+public Product deleteProductById(long id){
+    return null;
+    //return this.deleteProductById(id); Não está funfando tá ligado
+}
 
 }
