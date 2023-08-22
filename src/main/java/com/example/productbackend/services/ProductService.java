@@ -34,5 +34,7 @@ public void deleteProductById(long id){
     }
 
 }
-
+ public Product save(Product product){
+    return this.repository.save(product);
+ }
 }
