@@ -22,12 +22,17 @@ public List<Product> getProducts(){
 
 public Product getProduct(long id){
     return this.repository.findById(id)
-   .orElseThrow( () -> new EntityNotFoundException("Product not found "));
+    .orElseThrow( () -> new EntityNotFoundException("Product not found "));
                          
 }
-public Product deleteProductById(long id){
-    return null;
-    //return this.deleteProductById(id); Não está funfando tá ligado
+public void deleteProductById(long id){
+    if(this.repository.existsById(id)){
+        this.repository.deleteById(id);
+    }
+    else {
+        throw new EntityNotFoundException("Product not found ");
+    }
+
 }
 
 }
