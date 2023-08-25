@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.productbackend.dtos.ProductRequest;
+import com.example.productbackend.dtos.ProductResponse;
 import com.example.productbackend.entities.Product;
 import com.example.productbackend.mappers.ProductMapper;
 import com.example.productbackend.repositories.ProductRepository;
@@ -37,8 +38,9 @@ public class ProductService {
 
     }
 
-    public Product save(ProductRequest product) {
-        return this.repository.save(ProductMapper.toEntity(product));
+    public ProductResponse save(ProductRequest product) {
+        var entity= this.repository.save(ProductMapper.toEntity(product));
+        return ProductMapper.toDTO(entity);
     }
 
 
